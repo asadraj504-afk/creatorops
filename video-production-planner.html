@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Video Production Planner - CreatorOps</title><link rel="stylesheet" href="style.css"><meta name="theme-color" content="#06101f">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="CreatorOps">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CreatorOps - Free Video Production Planning Tools">
+<meta property="og:description" content="Plan script length, visual beats, footage clips and image requirements with free creator production tools.">
+<meta name="twitter:card" content="summary">
+</head><body><noscript><div style="padding:12px;text-align:center;background:#3a1f1f;color:#fff">CreatorOps calculators require JavaScript to run.</div></noscript><div class="topbar"><div class="container nav"><a class="brand-wrap" href="index.html"><div class="brand-icon"></div><div class="brand-copy"><strong>Creator<span>Ops</span></strong><small>PLAN CREATE PRODUCE FASTER</small></div></a><nav class="navlinks"><a href="index.html">Home</a><a href="video-production-planner.html">Planner</a><a href="visual-beat-calculator.html">Visual Beats</a><a href="script-voiceover-calculator.html">Voiceover</a><a href="about.html">About</a></nav><a class="pill-btn" href="video-production-planner.html">Free Tools. No Signup.</a></div></div><main class="container"><section class="page-head"><div class="eyebrow">FLAGSHIP TOOL</div><h1>Video Production Planner</h1><p>Turn one runtime target into a complete production workload.</p></section><section class="calc-layout"><div class="panel"><div class="form-row"><div><label>Minutes</label><input id="m" type="number" value="20"></div><div><label>Seconds</label><input id="s" type="number" value="0"></div></div><label>Narration speed (WPM)</label><input id="w" type="number" value="145"><div class="form-row"><div><label>Intro excluded (sec)</label><input id="i" type="number" value="15"></div><div><label>Outro excluded (sec)</label><input id="o" type="number" value="15"></div></div><label>Visual change every (sec)</label><input id="b" type="number" step=".5" value="4"><label>Video footage %</label><input id="p" type="number" value="70" min="0" max="100"><button class="primary" onclick="copyPlan()">Copy plan</button><button class="secondary" onclick="downloadPlan()">Download TXT</button></div><div class="panel results" id="r"></div></section>
+<section class="container" style="padding-bottom:42px">
+  <div class="panel">
+    <div class="eyebrow">HOW IT WORKS</div>
+    <h2 style="font-size:30px;margin:10px 0 8px">Plan your video before production starts</h2>
+    <p>CreatorOps estimates narration words from speaking pace, then converts your usable timeline into visual beats and splits those beats into footage and image requirements.</p>
+    <h3>What is a visual beat?</h3>
+    <p>A visual beat is one planned visual change on the timeline. If your visuals change every 4 seconds, a 20-minute timeline needs roughly 300 visual beats before exclusions.</p>
+    <h3>Are the word counts exact?</h3>
+    <p>No. They are planning estimates because real speaking speed, pauses and editing rhythm vary.</p>
+    <h3>Does CreatorOps upload my inputs?</h3>
+    <p>Not in V1. The calculator logic runs in your browser.</p>
+  </div>
+</section>
+
+</main><footer><div class="container footer-inner"><div>© 2026 CreatorOps · Built for creators</div><div><a href="about.html">About</a><a href="privacy.html">Privacy</a></div></div></footer><script>['m','s','w','i','o','b','p'].forEach(x=>document.getElementById(x).oninput=calc);function v(x){return Math.max(0,+document.getElementById(x).value||0)}function calc(){let total=v('m')*60+v('s'),active=Math.max(0,total-Math.min(total,v('i')+v('o'))),words=Math.round(active/60*v('w')),beats=Math.ceil(active/Math.max(.5,v('b'))),pct=Math.min(100,v('p')),vid=Math.round(beats*pct/100),img=beats-vid;window.plan=`CreatorOps Production Plan\nTarget runtime: ${Math.floor(total/60)}:${String(Math.round(total%60)).padStart(2,'0')}\nTarget narration: ~${words} words\nVisual beats: ${beats}\nVideo clips: ${vid}\nImages: ${img}\nTotal assets/prompts: ${beats}`;r.innerHTML=`<div class="eyebrow">PRODUCTION PLAN</div><div class="metric"><small>Target narration</small><div class="num">~${words.toLocaleString()} words</div></div><div class="metric"><small>Visual coverage</small><div class="num">${(active/60).toFixed(1)} min</div></div><div class="metric"><small>Total visual beats</small><div class="num">${beats}</div></div><div class="metric"><small>Video clips (${pct}%)</small><div class="num">${vid}</div></div><div class="metric"><small>Images (${100-pct}%)</small><div class="num">${img}</div></div><div class="metric"><small>Total assets / prompts</small><div class="num">${beats}</div></div><p class="muted">Planning estimates only. Natural narration and editing rhythm vary.</p>`}function copyPlan(){navigator.clipboard.writeText(plan)}function downloadPlan(){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([plan],{type:'text/plain'}));a.download='creatorops-plan.txt';a.click()}calc()</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"CreatorOps Video Production Planner",
+  "applicationCategory":"MultimediaApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "description":"Free browser-based video production planner for script length, visual beats, footage clips, images and production assets."
+}
+</script>
+
+</body></html>

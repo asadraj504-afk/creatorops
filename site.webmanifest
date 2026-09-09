@@ -1,0 +1,9 @@
+{
+  "name": "CreatorOps",
+  "short_name": "CreatorOps",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#06101f",
+  "theme_color": "#06101f",
+  "description": "Free video production planning tools for creators."
+}
