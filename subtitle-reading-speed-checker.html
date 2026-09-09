@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Subtitle Reading Speed Checker - CreatorOps</title><meta name="description" content="Check subtitle reading speed in WPM and characters per second, and estimate display time for creator video captions.">
+<link rel="canonical" href="https://asadraj504-afk.github.io/creatorops/subtitle-reading-speed-checker.html"><link rel="stylesheet" href="style.css"><meta name="theme-color" content="#06101f">
+<meta name="color-scheme" content="dark"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="CreatorOps"><meta property="og:type" content="website"><meta property="og:title" content="Subtitle Reading Speed Checker - CreatorOps">
+<meta property="og:description" content="Check subtitle reading speed in WPM and characters per second, and estimate display time for creator video captions."><meta property="og:url" content="https://asadraj504-afk.github.io/creatorops/subtitle-reading-speed-checker.html"><meta name="twitter:card" content="summary">
+</head><body><noscript><div style="padding:12px;text-align:center;background:#3a1f1f;color:#fff">CreatorOps calculators require JavaScript to run.</div></noscript>
+<div class="topbar"><div class="container nav"><a class="brand-wrap" href="index.html"><div class="brand-icon"></div><div class="brand-copy"><strong>Creator<span>Ops</span></strong><small>PLAN CREATE PRODUCE FASTER</small></div></a>
+<nav class="navlinks"><a href="index.html">Home</a><a href="video-production-planner.html">Planner</a><a href="b-roll-shot-count-planner.html">B-Roll</a><a href="youtube-production-budget-calculator.html">Budget</a><a href="subtitle-reading-speed-checker.html">Subtitles</a><a href="about.html">About</a></nav>
+<a class="pill-btn" href="video-production-planner.html">Free Tools. No Signup.</a></div></div>
+<main class="container">
+<section class="page-head"><div class="eyebrow">NEW CREATOR TOOL</div><h1>Subtitle Reading Speed Checker</h1>
+<p>Check subtitle words per minute, characters per second and the display time your caption may need.</p></section>
+<section class="calc-layout"><div class="panel">
+<label>Subtitle / caption text</label><textarea id="t" rows="8" style="width:100%;box-sizing:border-box" placeholder="Paste one subtitle or caption segment here...">This is a sample subtitle line for a creator video.</textarea>
+<label>On-screen duration (seconds)</label><input id="d" type="number" value="3" min=".1" step=".1">
+<label>Target reading speed (WPM)</label><input id="target" type="number" value="160" min="60">
+<button class="primary" onclick="copyResult()">Copy result</button></div><div class="panel results" id="r"></div></section>
+<section style="padding-bottom:42px"><div class="panel"><div class="eyebrow">CAPTION QA</div><h2>Check readability before export</h2>
+<p>This checker measures the amount of text against its on-screen duration. WPM is useful for word-based pacing, while characters per second gives another view of caption density.</p>
+<h3>There is no universal perfect speed</h3><p>Audience, language, reading level, platform and caption style all matter. Treat the target as your project standard rather than a universal guarantee.</p>
+<h3>Check individual cues</h3><p>Paste one subtitle cue at a time when you need a meaningful timing check. Long paragraphs can hide individual captions that flash too quickly.</p></div></section></main>
+<footer><div class="container footer-inner"><div>© 2026 CreatorOps · Built for creators</div><div><a href="about.html">About</a><a href="privacy.html">Privacy</a></div></div></footer>
+<script>
+['t','d','target'].forEach(id=>document.getElementById(id).oninput=calc);
+function calc(){let text=document.getElementById('t').value.trim(),words=text?text.split(/\s+/).length:0,chars=text.replace(/\s/g,'').length,d=Math.max(.1,+document.getElementById('d').value||.1),target=Math.max(1,+document.getElementById('target').value||160),wpm=words/d*60,cps=chars/d,need=words/target*60,status=wpm<=target?'Within your target':'Faster than your target';
+window.out=`CreatorOps Subtitle Reading Speed\nWords: ${words}\nCharacters (no spaces): ${chars}\nDuration: ${d.toFixed(1)}s\nReading speed: ${wpm.toFixed(0)} WPM\nCharacters/sec: ${cps.toFixed(1)}\nTarget display time: ${need.toFixed(1)}s\nStatus: ${status}`;
+r.innerHTML=`<div class="eyebrow">READABILITY CHECK</div><div class="metric"><small>Words</small><div class="num">${words}</div></div><div class="metric"><small>Reading speed</small><div class="num">${wpm.toFixed(0)} WPM</div></div><div class="metric"><small>Characters / second</small><div class="num">${cps.toFixed(1)}</div></div><div class="metric"><small>Display time at ${target} WPM</small><div class="num">${need.toFixed(1)} sec</div></div><div class="metric"><small>Status</small><div class="num">${status}</div></div><p class="muted">Use your own project reading-speed standard.</p>`}
+function copyResult(){navigator.clipboard.writeText(window.out)} calc();</script><script type="application/ld+json">{
+"@context":"https://schema.org","@type":"WebApplication","name":"CreatorOps Subtitle Reading Speed Checker",
+"applicationCategory":"MultimediaApplication","operatingSystem":"Any",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Check subtitle reading speed in WPM and characters per second, and estimate display time for creator video captions."}</script></body></html>

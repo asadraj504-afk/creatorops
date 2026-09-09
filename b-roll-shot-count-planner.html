@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B-Roll Shot Count Planner - CreatorOps</title><meta name="description" content="Calculate B-roll shot count, visual asset workload, footage clips and image requirements from video runtime and shot duration.">
+<link rel="canonical" href="https://asadraj504-afk.github.io/creatorops/b-roll-shot-count-planner.html"><link rel="stylesheet" href="style.css"><meta name="theme-color" content="#06101f">
+<meta name="color-scheme" content="dark"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="CreatorOps"><meta property="og:type" content="website"><meta property="og:title" content="B-Roll Shot Count Planner - CreatorOps">
+<meta property="og:description" content="Calculate B-roll shot count, visual asset workload, footage clips and image requirements from video runtime and shot duration."><meta property="og:url" content="https://asadraj504-afk.github.io/creatorops/b-roll-shot-count-planner.html"><meta name="twitter:card" content="summary">
+</head><body><noscript><div style="padding:12px;text-align:center;background:#3a1f1f;color:#fff">CreatorOps calculators require JavaScript to run.</div></noscript>
+<div class="topbar"><div class="container nav"><a class="brand-wrap" href="index.html"><div class="brand-icon"></div><div class="brand-copy"><strong>Creator<span>Ops</span></strong><small>PLAN CREATE PRODUCE FASTER</small></div></a>
+<nav class="navlinks"><a href="index.html">Home</a><a href="video-production-planner.html">Planner</a><a href="b-roll-shot-count-planner.html">B-Roll</a><a href="youtube-production-budget-calculator.html">Budget</a><a href="subtitle-reading-speed-checker.html">Subtitles</a><a href="about.html">About</a></nav>
+<a class="pill-btn" href="video-production-planner.html">Free Tools. No Signup.</a></div></div>
+<main class="container">
+<section class="page-head"><div class="eyebrow">NEW CREATOR TOOL</div><h1>B-Roll Shot Count Planner</h1>
+<p>Turn a target runtime into a practical B-roll workload before you start sourcing or generating visuals.</p></section>
+<section class="calc-layout"><div class="panel">
+<div class="form-row"><div><label>Video minutes</label><input id="m" type="number" value="12" min="0"></div><div><label>Seconds</label><input id="s" type="number" value="0" min="0" max="59"></div></div>
+<label>Intro + outro without B-roll (seconds)</label><input id="x" type="number" value="30" min="0">
+<label>Average shot duration (seconds)</label><input id="d" type="number" value="5" min=".5" step=".5">
+<label>Video footage share (%)</label><input id="p" type="number" value="70" min="0" max="100">
+<button class="primary" onclick="copyPlan()">Copy shot plan</button></div><div class="panel results" id="r"></div></section>
+<section style="padding-bottom:42px"><div class="panel"><div class="eyebrow">PLANNING GUIDE</div>
+<h2>How many B-roll shots do you need?</h2><p>The planner divides your usable visual timeline by the average time each shot stays on screen. It then splits the result between video clips and still images.</p>
+<h3>Use it before sourcing assets</h3><p>A shot-count target helps documentary, faceless and explainer creators estimate how much footage, image generation or stock research a project may require.</p>
+<h3>Planning estimate, not an editing rule</h3><p>Real edits mix short and long shots. Use the result as a workload target, then adjust pacing around important moments.</p></div></section></main>
+<footer><div class="container footer-inner"><div>© 2026 CreatorOps · Built for creators</div><div><a href="about.html">About</a><a href="privacy.html">Privacy</a></div></div></footer>
+<script>
+['m','s','x','d','p'].forEach(id=>document.getElementById(id).oninput=calc);
+function n(id){return Math.max(0,+document.getElementById(id).value||0)}
+function calc(){let total=n('m')*60+n('s'),active=Math.max(0,total-Math.min(total,n('x'))),dur=Math.max(.5,n('d')),shots=Math.ceil(active/dur),pct=Math.min(100,n('p')),video=Math.round(shots*pct/100),images=shots-video,apm=active?shots/(active/60):0;
+window.plan=`CreatorOps B-Roll Shot Plan\nUsable visual time: ${(active/60).toFixed(1)} min\nAverage shot duration: ${dur}s\nTotal shots: ${shots}\nVideo clips: ${video}\nImages: ${images}\nAssets per minute: ${apm.toFixed(1)}`;
+r.innerHTML=`<div class="eyebrow">SHOT PLAN</div><div class="metric"><small>Usable visual time</small><div class="num">${(active/60).toFixed(1)} min</div></div><div class="metric"><small>Total B-roll shots</small><div class="num">${shots}</div></div><div class="metric"><small>Video clips</small><div class="num">${video}</div></div><div class="metric"><small>Images</small><div class="num">${images}</div></div><div class="metric"><small>Assets per minute</small><div class="num">${apm.toFixed(1)}</div></div><p class="muted">Estimate only. Actual pacing varies by scene.</p>`}
+function copyPlan(){navigator.clipboard.writeText(window.plan)} calc();</script><script type="application/ld+json">{
+"@context":"https://schema.org","@type":"WebApplication","name":"CreatorOps B-Roll Shot Count Planner",
+"applicationCategory":"MultimediaApplication","operatingSystem":"Any",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Calculate B-roll shot count, visual asset workload, footage clips and image requirements from video runtime and shot duration."}</script></body></html>

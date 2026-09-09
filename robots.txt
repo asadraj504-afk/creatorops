@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace YOUR-DOMAIN before production deployment:
 Sitemap: https://asadraj504-afk.github.io/creatorops/sitemap.xml

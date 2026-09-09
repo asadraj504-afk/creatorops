@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YouTube Production Budget Calculator - CreatorOps</title><meta name="description" content="Estimate per-video, monthly and annual YouTube production costs across research, script, voiceover, editing, thumbnails, assets and tools.">
+<link rel="canonical" href="https://asadraj504-afk.github.io/creatorops/youtube-production-budget-calculator.html"><link rel="stylesheet" href="style.css"><meta name="theme-color" content="#06101f">
+<meta name="color-scheme" content="dark"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="CreatorOps"><meta property="og:type" content="website"><meta property="og:title" content="YouTube Production Budget Calculator - CreatorOps">
+<meta property="og:description" content="Estimate per-video, monthly and annual YouTube production costs across research, script, voiceover, editing, thumbnails, assets and tools."><meta property="og:url" content="https://asadraj504-afk.github.io/creatorops/youtube-production-budget-calculator.html"><meta name="twitter:card" content="summary">
+</head><body><noscript><div style="padding:12px;text-align:center;background:#3a1f1f;color:#fff">CreatorOps calculators require JavaScript to run.</div></noscript>
+<div class="topbar"><div class="container nav"><a class="brand-wrap" href="index.html"><div class="brand-icon"></div><div class="brand-copy"><strong>Creator<span>Ops</span></strong><small>PLAN CREATE PRODUCE FASTER</small></div></a>
+<nav class="navlinks"><a href="index.html">Home</a><a href="video-production-planner.html">Planner</a><a href="b-roll-shot-count-planner.html">B-Roll</a><a href="youtube-production-budget-calculator.html">Budget</a><a href="subtitle-reading-speed-checker.html">Subtitles</a><a href="about.html">About</a></nav>
+<a class="pill-btn" href="video-production-planner.html">Free Tools. No Signup.</a></div></div>
+<main class="container">
+<section class="page-head"><div class="eyebrow">NEW CREATOR TOOL</div><h1>YouTube Production Budget Calculator</h1>
+<p>Estimate the real cash cost of one video and your monthly publishing budget.</p></section>
+<section class="calc-layout"><div class="panel">
+<label>Videos per month</label><input id="v" type="number" value="4" min="1">
+<div class="form-row"><div><label>Research / video ($)</label><input id="research" type="number" value="10" min="0"></div><div><label>Script / video ($)</label><input id="script" type="number" value="25" min="0"></div></div>
+<div class="form-row"><div><label>Voiceover / video ($)</label><input id="voice" type="number" value="10" min="0"></div><div><label>Editing / video ($)</label><input id="edit" type="number" value="50" min="0"></div></div>
+<div class="form-row"><div><label>Thumbnail / video ($)</label><input id="thumb" type="number" value="10" min="0"></div><div><label>Stock / AI assets ($)</label><input id="assets" type="number" value="15" min="0"></div></div>
+<div class="form-row"><div><label>Other cost / video ($)</label><input id="other" type="number" value="0" min="0"></div><div><label>Monthly tool subscriptions ($)</label><input id="tools" type="number" value="30" min="0"></div></div>
+<label>Contingency / revisions (%)</label><input id="c" type="number" value="10" min="0">
+<button class="primary" onclick="copyPlan()">Copy budget</button></div><div class="panel results" id="r"></div></section>
+<section style="padding-bottom:42px"><div class="panel"><div class="eyebrow">BUDGET GUIDE</div><h2>Budget the whole creator workflow</h2>
+<p>Editing is only one production cost. Research, scripting, voiceover, thumbnails, stock or AI assets, subscriptions and revisions can materially change the real cost of publishing.</p>
+<h3>Why separate per-video and monthly costs?</h3><p>Freelancer and asset costs usually scale with output, while subscriptions are often fixed. Separating them makes it easier to compare publishing frequencies.</p>
+<h3>Use your own rates</h3><p>CreatorOps does not assume industry pricing. Enter what you actually pay or expect to pay.</p></div></section></main>
+<footer><div class="container footer-inner"><div>© 2026 CreatorOps · Built for creators</div><div><a href="about.html">About</a><a href="privacy.html">Privacy</a></div></div></footer>
+<script>
+const ids=['v','research','script','voice','edit','thumb','assets','other','tools','c'];ids.forEach(id=>document.getElementById(id).oninput=calc);
+function n(id){return Math.max(0,+document.getElementById(id).value||0)}
+function money(x){return '$'+x.toFixed(2)}
+function calc(){let count=Math.max(1,n('v')),base=n('research')+n('script')+n('voice')+n('edit')+n('thumb')+n('assets')+n('other'),cont=base*n('c')/100,per=base+cont,monthly=per*count+n('tools'),annual=monthly*12;
+window.plan=`CreatorOps YouTube Production Budget\nVideos/month: ${count}\nVariable cost/video: ${money(per)}\nMonthly tools: ${money(n('tools'))}\nMonthly budget: ${money(monthly)}\nAnnual run-rate: ${money(annual)}`;
+r.innerHTML=`<div class="eyebrow">BUDGET PLAN</div><div class="metric"><small>Base cost / video</small><div class="num">${money(base)}</div></div><div class="metric"><small>Revisions / contingency</small><div class="num">${money(cont)}</div></div><div class="metric"><small>Variable cost / video</small><div class="num">${money(per)}</div></div><div class="metric"><small>Monthly budget</small><div class="num">${money(monthly)}</div></div><div class="metric"><small>Annual run-rate</small><div class="num">${money(annual)}</div></div><p class="muted">Planning estimate only. Enter your own actual rates.</p>`}
+function copyPlan(){navigator.clipboard.writeText(window.plan)} calc();</script><script type="application/ld+json">{
+"@context":"https://schema.org","@type":"WebApplication","name":"CreatorOps YouTube Production Budget Calculator",
+"applicationCategory":"MultimediaApplication","operatingSystem":"Any",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Estimate per-video, monthly and annual YouTube production costs across research, script, voiceover, editing, thumbnails, assets and tools."}</script></body></html>
